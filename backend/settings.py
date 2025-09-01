@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_vite',
+
+    'scene_reconstructor',
 ]
 
 MIDDLEWARE = [
@@ -121,9 +124,17 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+VITE_DEV_MODE = False
 
 try:
     from local_settings import *
     ...
 except ImportError:
     ...
+
+DJANGO_VITE = {
+    'default': {
+        'dev_mode': VITE_DEV_MODE,
+        'static_url_prefix': '/static/',
+    }
+}

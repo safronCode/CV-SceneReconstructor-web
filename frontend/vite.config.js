@@ -10,9 +10,21 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+  server: {
+    origin: 'http://localhost:5173'
+  },
+  base: '/static/scene_reconstructor/',
+  build: {
+    manifest: 'manifest.json',
+    emptyOutDir: true,
+    outDir: '../static/scene_reconstructor/',
+    rollupOptions: {
+      input: './src/main.js',
+    }
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
-    },
-  },
+    }
+  }
 })
